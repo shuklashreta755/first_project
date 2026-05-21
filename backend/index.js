@@ -1,4 +1,3 @@
-
 const dotenv = require("dotenv");
 dotenv.config({ path: "./.env" });
 const express = require("express");
@@ -10,13 +9,13 @@ const app = express();
 const ProductRoute = require("./src/routes/product.route.js");
 const UserRoute = require("./src/routes/user.route.js");
 const ChatRoute = require("./src/routes/chat.route.js");
-const PaymentRoute=require("./src/routes/payment.route.js");
+const PaymentRoute = require("./src/routes/payment.route.js");
 const connectDB = require("./src/config/db.js");
 const cookieParser = require("cookie-parser");
 const OrderRoute = require("./src/routes/order.route.js");
 const cors = require("cors");
-const setupSocket =require("./src/socket/socket.js");
-const http= require("http");
+const setupSocket = require("./src/socket/socket.js");
+const http = require("http");
 
 //dotenv.config({ path: "./.env" });
 
@@ -25,7 +24,7 @@ app.use(
   cors({
     origin: process.env.CORS_ORIGIN || "http://localhost:5173",
     credentials: true, // needed so cookies (accessToken) are sent cross-origin
-  })
+  }),
 );
 
 app.use(express.json());
@@ -35,18 +34,16 @@ app.use(cookieParser());
 app.use("/api/products", ProductRoute);
 app.use("/api/user", UserRoute);
 app.use("/api/order", OrderRoute);
-app.use("/api/chat",ChatRoute);
-app.use("/api/payment",PaymentRoute);
-app.get('/', (req, res) => {
+app.use("/api/chat", ChatRoute);
+app.use("/api/payment", PaymentRoute);
+app.get("/test", (req, res) => {
   res.status(200).json({
     message: "Server is up and running",
-    status: "success"
+    status: "success",
   });
 });
 
 //app.use("/uploads", express.static("uploads"));
-
-
 
 const server = http.createServer(app);
 setupSocket(server);
@@ -60,36 +57,3 @@ connectDB()
   .catch((err) => {
     console.log("MongoDB connection failed!!", err);
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
