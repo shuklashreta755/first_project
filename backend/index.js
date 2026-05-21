@@ -37,8 +37,12 @@ app.use("/api/user", UserRoute);
 app.use("/api/order", OrderRoute);
 app.use("/api/chat",ChatRoute);
 app.use("/api/payment",PaymentRoute);
-
-
+app.get('/', (req, res) => {
+  res.status(200).json({
+    message: "Server is up and running",
+    status: "success"
+  });
+});
 
 //app.use("/uploads", express.static("uploads"));
 
