@@ -32,18 +32,9 @@ const getProduct = async (req, res) => {
 //   }
 // };
 
-
-
-
-
-
-
 const createProduct = async (req, res) => {
-
   try {
-
     const product = await Product.create({
-
       name: req.body.name,
 
       description: req.body.description,
@@ -53,27 +44,17 @@ const createProduct = async (req, res) => {
       price: req.body.price,
 
       image: req.file
-        ? `https://first-project-git-main-shreta-shukla-s-projects.vercel.app${req.file.filename}`    
+        ? `first-project-eight-gules.vercel.app${req.file.filename}`
         : req.body.image,
-
     });
 
     res.status(201).json(product);
-
   } catch (error) {
-
     res.status(500).json({
       message: error.message,
     });
-
   }
 };
-
-
-
-
-
-
 
 // update product
 const updateProduct = async (req, res) => {
@@ -115,12 +96,6 @@ module.exports = {
   deleteProduct,
 };
 
-
-
-
-
-
-
-// MOngoose methods used to perform database operation 
+// MOngoose methods used to perform database operation
 
 // create(),find(),findById()
