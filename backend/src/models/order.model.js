@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Product=require("./product.model.js");
+const Product = require("./product.model.js");
 
 const orderSchema = mongoose.Schema(
   {
@@ -28,24 +28,25 @@ const orderSchema = mongoose.Schema(
       type: Date,
       Default: Date.now(),
     },
+    payment: {
+      type: String,
+      enum: ["SUCCESS", "PENDING", "FAILED"],
+      default: SUCCESS,
+    },
   },
   { timestamps: true },
 );
 
-
-
 orderSchema.pre("save", async function () {
+  const product = await Product.findById(this.productId);
 
-   const product = await Product.findById(this.productId);
+  if (!product) {
+    throw new Error("Product not found");
+  }
 
-   if (!product) {
-      throw new Error("Product not found");
-   }
-
-   this.totalPrice = product.price * this.quantity;
+  this.totalPrice = product.price * this.quantity;
 });
-
 
 const Order = mongoose.model("Order", orderSchema);
 
-module.exports=Order;
+module.exports = Order;

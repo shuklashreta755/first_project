@@ -63,6 +63,18 @@ const ChatInput = () => {
     setMessage("");
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+
+      if (selectedUser?.isBroadcastRoom) {
+        handleBroadcast();
+      } else {
+        handleSend();
+      }
+    }
+  };
+
   return (
     <div className="chat-input-box">
       {
@@ -78,7 +90,7 @@ const ChatInput = () => {
                 onChange={(e) => setMessage(e.target.value)}
               />
 
-              <button onClick={handleBroadcast}>B</button>
+              <button onClick={handleKeyDown}>B</button>
             </>
           ) : (
             // for user
@@ -97,7 +109,7 @@ const ChatInput = () => {
               onChange={(e) => setMessage(e.target.value)}
             />
 
-            <button onClick={handleSend}>Send</button>
+            <button onClick={handleKeyDown}>Send</button>
           </>
         )
       }

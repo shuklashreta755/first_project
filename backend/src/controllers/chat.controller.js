@@ -2,62 +2,6 @@
 const Message = require("../models/message.model");
 const User = require("../models/user.model");
 
-// const sendMessage = async (req, res) => {
-//   try {
-//     const { sender, receiver, message } = req.body;
-
-//     const newMessage = await Message.create({
-//       sender,
-//       receiver,
-//       message,
-//     });
-
-//     res.status(201).json(newMessage);
-//   } catch (error) {
-//     res.status(500).json({
-//       message: error.message,
-//     });
-//   }
-// };
-
-
-
-
-
-
-
-
-// const getMessages = async (req, res) => {
-//   try {
-//     const { senderId, receiverId } = req.params;
-
-//     const messages = await Message.find({
-//       $or: [
-//         {
-//           sender: senderId,
-//           receiver: receiverId,
-//         },
-//         {
-//           sender: receiverId,
-//           receiver: senderId,
-//         },
-//       ],
-//     }).sort({ createdAt: 1 });
-
-//     res.json(messages);
-//   } catch (error) {
-//     res.status(500).json({
-//       message: error.message,
-//     });
-//   }
-// };
-
-
-
-
-
-
-
 
      const getMessages = async (req, res) => {
   try {
@@ -66,9 +10,8 @@ const User = require("../models/user.model");
 
     let messages = [];
 
-    // =========================
+    
     // BROADCAST ROOM
-    // =========================
 
     if (receiverId === "broadcast") {
 
