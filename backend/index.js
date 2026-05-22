@@ -52,7 +52,7 @@ setupSocket(server);
 
 connectDB()
   .then(() => {
-    server.listen(process.env.CORS_ORIGIN, () => {
+    server.listen(process.env.PORT || 3000, () => {
       console.log(`Server is running at port: ${process.env.PORT || 3000}`);
     });
   })
