@@ -22,7 +22,7 @@ const http = require("http");
 // CORS — allow requests from the Vite frontend
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN || "http://localhost:5173",
+    origin: process.env.CORS_ORIGIN || "https://first-project-eight-gules.vercel.app",
     credentials: true, // needed so cookies (accessToken) are sent cross-origin
   }),
 );

@@ -17,13 +17,14 @@ const ChatMessages = () => {
 
   const { user: currentUser } = useSelector((state) => state.auth);
 
-  // receive normal msg
+  // join chat
 
   useEffect(() => {
     socket.emit("join", currentUser?._id);
     console.log(`user switched to ${selectedUser?.name}`);
   }, [selectedUser]);
 
+   // receive normal msg
   useEffect(() => {
     socket.on("receiveMessage", (data) => {
       console.log("data come from user", data);
