@@ -44,7 +44,7 @@ const createProduct = async (req, res) => {
       price: req.body.price,
 
       image: req.file
-        ? `first-project-eight-gules.vercel.app${req.file.filename}`
+        ? `https://first-project-eight-gules.vercel.app${req.file.filename}`
         : req.body.image,
     });
 

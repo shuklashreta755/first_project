@@ -54,7 +54,7 @@ let users = {};
 const setupSocket = (server) => {
   const io = socketIO(server, {
     cors: {
-      origin: "first-project-eight-gules.vercel.app",
+      origin: "https://first-project-eight-gules.vercel.app",
       methods: ["GET", "POST"],
     },
   });
