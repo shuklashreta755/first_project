@@ -502,13 +502,19 @@ const OrdersPanel = ({ isAdmin }) => {
           <table style={tbl.t}>
             <thead>
               <tr style={{ backgroundColor: "#4f46e5", color: "#fff" }}>
-                {["#", "Product", "Qty", "Total", "Date", "Actions"].map(
-                  (h) => (
-                    <th key={h} style={tbl.th}>
-                      {h}
-                    </th>
-                  ),
-                )}
+                {[
+                  "#",
+                  "Product",
+                  "Qty",
+                  "Total",
+                  "Date",
+                  "Payment",
+                  "Actions",
+                ].map((h) => (
+                  <th key={h} style={tbl.th}>
+                    {h}
+                  </th>
+                ))}
               </tr>
             </thead>
             <tbody>
