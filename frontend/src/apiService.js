@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  //  baseURL: "http://localhost:3000/api",
-   baseURL: "https://first-project-a1ov.onrender.com"
+  //  baseURL: "https://first-project-a1ov.onrender.com/api",
+  baseURL: "https://first-project-a1ov.onrender.com",
 });
 
 // Add token automatically in every request
@@ -50,7 +50,6 @@ export const getMessageAPI = (senderId, receiverId) =>
   api.get(`/chat/${senderId}/${receiverId}`);
 // export const broadcastMessageAPI = (data) => api.post("/chat/broadcast", data);
 
-
 // for payment
-export const createRazorpayOrderAPI = (data) => api.post("/payment/createOrder", data);
-
+export const createRazorpayOrderAPI = (data) =>
+  api.post("/payment/createOrder", data);

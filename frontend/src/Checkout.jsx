@@ -2,12 +2,12 @@ import React, { useState, forwardRef, useImperativeHandle } from "react";
 import axios from "axios";
 
 const api = axios.create({
-  //baseURL: "http://localhost:3000/api",
-   baseURL: "https://first-project-a1ov.onrender.com"
+  //baseURL: "https://first-project-a1ov.onrender.com/api",
+  baseURL: "https://first-project-a1ov.onrender.com",
 });
 
 const Checkout = forwardRef((props, ref) => {
- // const [amount, setAmount] = useState(500);
+  // const [amount, setAmount] = useState(500);
 
   // load razorpay
 
@@ -35,8 +35,7 @@ const Checkout = forwardRef((props, ref) => {
   }) => {
     const isScriptLoaded = await loadRazorpayScript();
 
-    if (!isScriptLoaded) 
-    {
+    if (!isScriptLoaded) {
       alert("Razorpay SDK failed to load");
       return;
     }
@@ -54,7 +53,7 @@ const Checkout = forwardRef((props, ref) => {
 
       const options = {
         key: import.meta.env.VITE_RAZORPAY_API_KEY,
-       // amount: amount * 100,
+        // amount: amount * 100,
         currency,
         name: "My Shop",
         description: "Product Payment",
