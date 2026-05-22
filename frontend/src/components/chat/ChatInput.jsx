@@ -88,9 +88,10 @@ const ChatInput = () => {
                 placeholder="Broadcast message..."
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
+                onKeyDown={handleKeyDown}
               />
 
-              <button onClick={handleKeyDown}>B</button>
+              <button onClick={handleBroadcast}>B</button>
             </>
           ) : (
             // for user
@@ -107,9 +108,10 @@ const ChatInput = () => {
               placeholder="Type message..."
               value={message}
               onChange={(e) => setMessage(e.target.value)}
+               onKeyDown={handleKeyDown}
             />
 
-            <button onClick={handleKeyDown}>Send</button>
+            <button onClick={handleSend}>Send</button>
           </>
         )
       }
