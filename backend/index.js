@@ -23,7 +23,8 @@ const http = require("http");
 app.use(
   cors({
     origin:
-      process.env.CORS_ORIGIN || "https://first-project-eight-gules.vercel.app",
+      // process.env.CORS_ORIGIN || "https://first-project-eight-gules.vercel.app",
+      process.env.CORS_ORIGIN,
     credentials: true, // needed so cookies (accessToken) are sent cross-origin
   }),
 );
