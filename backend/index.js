@@ -52,6 +52,7 @@ setupSocket(server);
 
 connectDB()
   .then(() => {
+    console.log("mongoDB connected")
     server.listen(process.env.PORT || 3000, () => {
       console.log(`Server is running at port: ${process.env.PORT || 3000}`);
     });
