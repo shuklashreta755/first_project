@@ -2,7 +2,7 @@ import axios from "axios";
 
 const api = axios.create({
   //  baseURL: "https://first-project-a1ov.onrender.com/api",
-  baseURL: "https://first-project-a1ov.onrender.com",
+  baseURL: "https://first-project-a1ov.onrender.com/api",
 });
 
 // Add token automatically in every request
