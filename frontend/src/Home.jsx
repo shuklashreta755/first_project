@@ -538,9 +538,7 @@ const OrdersPanel = ({ isAdmin }) => {
                   </td>
                   <td style={tbl.td}>
 
-                    <td style={tbl.td}>
-                   {o.paymentStatus || "SUCCESS"}
-                   </td>
+                   
 
                     <div style={{ display: "flex", gap: "6px" }}>
                       <button
@@ -561,6 +559,13 @@ const OrdersPanel = ({ isAdmin }) => {
                       >
                         Delete
                       </button>
+
+
+                    <td style={tbl.td}>
+                   {o.paymentStatus || "SUCCESS"}
+                   </td>
+
+
                     </div>
                   </td>
                 </tr>
