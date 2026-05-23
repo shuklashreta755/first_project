@@ -33,13 +33,6 @@ const registerUser = async (req, res) => {
 const loginUser = async (req, res) => {
   try {
     const { email, name, password } = req.body;
-
-    //  if(!name || !email)
-    //  {
-    //   throw new ApiError(400, "username or email is required");
-    //  }
-
-    // const user = await User.findOne({ email });
     const user = await User.findOne({
       $or: [{ email }, { name }],
     });
@@ -57,11 +50,6 @@ const loginUser = async (req, res) => {
         message: "Invalid credentials",
       });
     }
-
-    // res.status(200).json({
-    //   message: "Login successful",
-
-    // });
 
     const { accessToken, refreshToken } = await generateAccessAndRefreshTokens(
       user._id,
@@ -125,7 +113,7 @@ const getUsers = async (req, res) => {
     console.log("users");
     const user = req.user
     console.log(user)
-    const users = await User.find({_id: {$ne : user?._id}});
+    const users = await User.find({_id: {$ne : user?._id}.select("_id name email")});
 
     res.status(200).json(users);
   } catch (error) {

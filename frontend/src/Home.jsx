@@ -266,20 +266,6 @@ const ProductsPanel = ({ isAdmin }) => {
                 </button>
               </div>
             ) : (
-              // <button
-              //   style={{ ...btn.primary, width: "100%" }}
-              //   onClick={() =>
-              //     dispatch(
-              //       createOrder({
-              //         productId: p._id,
-              //         quantity: 1,
-              //       }),
-              //     )
-              //   }
-              // >
-              //   Buy Now
-              // </button>
-
               <button
                 style={{ ...btn.primary, width: "100%" }}
                 onClick={() => {
@@ -378,34 +364,6 @@ const ProductsPanel = ({ isAdmin }) => {
               gap: "10px",
             }}
           >
-            {/* 
-      <button
-        style={{
-          ...btn.primary,
-          flex: 1,
-        }}
-
-        
-        onClick={() => {
-
-          dispatch(
-            createOrder({
-              productId:
-                selectedProduct._id,
-
-              quantity:
-                orderQuantity,
-            })
-          );
-
-          setShowOrderModal(false);
-        }
-      }
-      >
-        Confirm Order
-      </button>
-  */}
-
             <button
               onClick={async () => {
                 console.log(checkoutRef.current);
@@ -517,29 +475,47 @@ const OrdersPanel = ({ isAdmin }) => {
                 ))}
               </tr>
             </thead>
+
             <tbody>
               {orders.map((o, i) => (
                 <tr
                   key={o._id}
-                  style={{ backgroundColor: i % 2 === 0 ? "#f9f9fb" : "#fff" }}
+                  style={{
+                    backgroundColor: i % 2 === 0 ? "#f9f9fb" : "#fff",
+                  }}
                 >
+                  {/* # */}
                   <td style={tbl.td}>{i + 1}</td>
+
+                  {/* Product */}
                   <td style={tbl.td}>
                     {o.productId?.name ?? String(o.productId).slice(-6)}
                   </td>
+
+                  {/* Qty */}
                   <td style={tbl.td}>{o.quantity}</td>
+
+                  {/* Total */}
                   <td
-                    style={{ ...tbl.td, fontWeight: "600", color: "#4f46e5" }}
+                    style={{
+                      ...tbl.td,
+                      fontWeight: "600",
+                      color: "#4f46e5",
+                    }}
                   >
                     ₹{o.totalPrice}
                   </td>
+
+                  {/* Date */}
                   <td style={tbl.td}>
                     {new Date(o.createdAt).toLocaleDateString()}
                   </td>
+
+                  {/* Payment */}
+                  <td style={tbl.td}>{o.paymentStatus || "SUCESS"}</td>
+
+                  {/* Actions */}
                   <td style={tbl.td}>
-
-                   
-
                     <div style={{ display: "flex", gap: "6px" }}>
                       <button
                         style={btn.edit}
@@ -548,24 +524,19 @@ const OrdersPanel = ({ isAdmin }) => {
                             productId: o.productId,
                             quantity: o.quantity,
                           });
+
                           setShowEdit(o);
                         }}
                       >
                         Edit
                       </button>
+
                       <button
                         style={btn.danger}
                         onClick={() => dispatch(deleteOrder(o._id))}
                       >
                         Delete
                       </button>
-
-
-                    <td style={tbl.td}>
-                   {o.paymentStatus || "SUCCESS"}
-                   </td>
-
-
                     </div>
                   </td>
                 </tr>
