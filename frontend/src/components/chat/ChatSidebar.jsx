@@ -41,7 +41,7 @@ const ChatSidebar = () => {
           📢 Announcements
         </div>
 
-        {users.map((user) => (
+        {users?.map((user) => (
           <UserCard key={user._id} user={user} />
         ))}
       </div>
