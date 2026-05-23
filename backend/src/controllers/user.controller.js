@@ -113,7 +113,7 @@ const getUsers = async (req, res) => {
     console.log("users");
     const user = req.user;
     console.log(user);
-    const users = await User.find({ _id: { $ne: user?._id } }).select(
+    const users = await User.find({_id: { $ne: user?._id } }).select(
       "_id name email",
     );
 
