@@ -111,9 +111,11 @@ const logoutUser = asyncHandler(async (req, res) => {
 const getUsers = async (req, res) => {
   try {
     console.log("users");
-    const user = req.user
-    console.log(user)
-    const users = await User.find({_id: {$ne : user?._id}.select("_id name email")});
+    const user = req.user;
+    console.log(user);
+    const users = await User.find({ _id: { $ne: user?._id } }).select(
+      "_id name email",
+    );
 
     res.status(200).json(users);
   } catch (error) {
@@ -154,4 +156,3 @@ module.exports = {
   deleteUser,
   searchUser,
 };
-
