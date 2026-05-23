@@ -113,13 +113,11 @@ const getUsers = async (req, res) => {
     console.log("users");
     const user = req.user;
     console.log(user);
-    const users = await User.find({_id: { $ne: user?._id },}).select(
-      "_id name email",
-    );
+    const users = await User.find({_id: {$ne : user?._id },}).select("_id name email");
 
-    res.status(200).json(users);
+    res.status(200).json(new ApiResponse(200,users,"User fetched successfully"));
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json(new ApiResponse(500,null,error.message));
   }
 };
 
